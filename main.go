@@ -17,6 +17,11 @@ type Entry struct {
 	Xattrs map[string][]byte
 }
 
+/*
+	TODO
+	Set exit code if any mismatches or errors
+*/
+
 func main() {
 	var opts struct {
 		Verbose bool `short:"v" long:"verbose" description:"Show verbose debug information"`
@@ -37,12 +42,6 @@ func main() {
 	if opts.Verbose {
 		fmt.Printf("comparing %s to %s\n", srcDir, destDir)
 	}
-
-	/*
-		TODO
-		Set exit code if any mismatches or errors
-		Put debug output behind verbose flag
-	*/
 
 	chanBufferSize := 1000
 	srcChan := make(chan *Entry, chanBufferSize)
